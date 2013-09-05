@@ -16,6 +16,12 @@ public class ArgentumBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private List<Negociacao> negociacoes;
 	private String titulo;
+	private String nomeIndicador;
+	private String nomeMedia;
+
+	public List<Negociacao> getNegociacoes() {
+		return negociacoes;
+	}
 
 	public String getTitulo() {
 		return titulo;
@@ -25,8 +31,20 @@ public class ArgentumBean implements Serializable {
 		this.titulo = titulo;
 	}
 
-	public List<Negociacao> getNegociacoes() {
-		return negociacoes;
+	public String getNomeIndicador() {
+		return nomeIndicador;
+	}
+
+	public void setNomeIndicador(String nomeIndicador) {
+		this.nomeIndicador = nomeIndicador;
+	}
+
+	public String getNomeMedia() {
+		return nomeMedia;
+	}
+
+	public void setNomeMedia(String nomeMedia) {
+		this.nomeMedia = nomeMedia;
 	}
 
 	public void preparaDados() {
