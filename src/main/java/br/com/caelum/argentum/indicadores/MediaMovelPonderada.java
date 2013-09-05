@@ -5,13 +5,15 @@ import br.com.caelum.argentum.modelo.SerieTemporal;
 public class MediaMovelPonderada implements Indicador {
 
 	private final int ponderacao;
+	private Indicador outroIndicador;
 
-	public MediaMovelPonderada(int intervalo) {
+	public MediaMovelPonderada(int intervalo, Indicador outroIndicador) {
 		if (intervalo < 1) {
 			throw new IllegalArgumentException(
 					"O 'intervalo' deve ser maior que 0.");
 		}
 		ponderacao = calcularPonderacao(intervalo);
+		this.outroIndicador = outroIndicador;
 	}
 
 	public int getPonderacao() {
@@ -24,7 +26,7 @@ public class MediaMovelPonderada implements Indicador {
 		int peso = 1;
 
 		for (int i = posicao - 2; i <= posicao; i++) {
-			soma += serie.getCandle(i).getFechamento() * peso;
+			soma += outroIndicador.calcula(i, serie) * peso;
 			peso++;
 		}
 		return soma / ponderacao;

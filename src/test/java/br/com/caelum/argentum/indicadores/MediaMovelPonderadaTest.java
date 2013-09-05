@@ -13,7 +13,7 @@ public class MediaMovelPonderadaTest {
 	@Test
 	public void sequenciaSimplesDeCandles() {
 		SerieTemporal serie = GeradorDeSerie.criaSerie(1, 2, 3, 4, 5, 6);
-		MediaMovelPonderada mmp = new MediaMovelPonderada(3);
+		MediaMovelPonderada mmp = new MediaMovelPonderada(3, new IndicadorFechamento());
 
 		Assert.assertEquals(14.0 / mmp.getPonderacao(), mmp.calcula(2, serie),
 				delta);

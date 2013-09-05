@@ -5,16 +5,18 @@ import br.com.caelum.argentum.modelo.SerieTemporal;
 public class MediaMovelSimples implements Indicador {
 
 	private final int intervalo;
+	private Indicador outroIndicador;
 
-	public MediaMovelSimples(int intervalo) {
+	public MediaMovelSimples(int intervalo, Indicador outroIndicador) {
 		this.intervalo = intervalo;
+		this.outroIndicador = outroIndicador;
 	}
 
 	@Override
 	public double calcula(int posicao, SerieTemporal serie) {
 		double soma = 0.0;
 		for (int i = posicao - 2; i <= posicao; i++) {
-			soma += serie.getCandle(i).getFechamento();
+			soma += outroIndicador.calcula(i, serie);
 		}
 		return soma / intervalo;
 	}
