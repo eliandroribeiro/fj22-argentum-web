@@ -7,8 +7,28 @@
 	<title>Argentum Web</title>
 </h:head>
 <h:body>
-	<p:panel header="Negociações" footer="Argentum Web">
-		<h:form id="form">
+	<h:form id="dadosGrafico">
+		<p:growl />
+		<p:panel header="Dados do gráfico">
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Título" for="titulo" />
+				<p:inputText id="titulo" value="#{argentumBean.titulo}"
+					required="true">
+					<f:validateLength minimum="5" />
+				</p:inputText>
+				<p:commandButton value="Gerar gráfico"
+					actionListener="#{argentumBean.preparaDados}" ajax="false" />
+			</p:panelGrid>
+		</p:panel>
+
+		<p:lineChart value="#{argentumBean.modeloGrafico}" legendPosition="e"
+			title="#{argentumBean.titulo}" rendered="false" />
+	</h:form>
+	<br />
+
+	<h:form id="listaNegociacao">
+		<p:panel header="Negociações" footer="Argentum Web"
+			rendered="#{not empty argentumBean.negociacoes}">
 			<p:dataTable var="negociacao" value="#{argentumBean.negociacoes}"
 				paginator="true" rows="15">
 
@@ -35,7 +55,7 @@
 				</p:column>
 
 			</p:dataTable>
-		</h:form>
-	</p:panel>
+		</p:panel>
+	</h:form>
 </h:body>
 </html>
