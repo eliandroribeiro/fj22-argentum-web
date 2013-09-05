@@ -14,7 +14,7 @@ public class MediaMovelSimplesTest {
 	public void sequenciaSimplesDeCandles() {
 		SerieTemporal serie = GeradorDeSerie.criaSerie(1, 2, 3, 4, 3, 4, 5, 4,
 				3);
-		Indicador mms = new MediaMovelSimples();
+		Indicador mms = new MediaMovelSimples(3);
 
 		Assert.assertEquals(2.0, mms.calcula(2, serie), delta);
 		Assert.assertEquals(3.0, mms.calcula(3, serie), delta);
