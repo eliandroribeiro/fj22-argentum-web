@@ -19,6 +19,7 @@ public class ArgentumBean implements Serializable {
 	private String titulo;
 	private String nomeIndicador;
 	private String nomeMedia;
+	private Integer intervalo = 3;
 
 	public List<Negociacao> getNegociacoes() {
 		return negociacoes;
@@ -48,11 +49,19 @@ public class ArgentumBean implements Serializable {
 		this.nomeMedia = nomeMedia;
 	}
 
+	public Integer getIntervalo() {
+		return intervalo;
+	}
+
+	public void setIntervalo(Integer intervalo) {
+		this.intervalo = intervalo;
+	}
+
 	public void preparaDados() {
 		ClienteWebService cliente = new ClienteWebService();
 		negociacoes = cliente.getNegociacoes();
 
 		IndicadorFactory indicadorFactory = new IndicadorFactory(nomeIndicador,
-				nomeMedia, 0);
+				nomeMedia, intervalo);
 	}
 }

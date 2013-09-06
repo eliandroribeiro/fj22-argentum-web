@@ -11,15 +11,15 @@
 		<p:growl />
 		<p:panel header="Dados do gráfico">
 			<h:panelGrid columns="2">
-				<p:outputLabel value="Título *" for="titulo" />
+				<p:outputLabel value="Título" for="titulo" />
 				<p:inputText id="titulo" value="#{argentumBean.titulo}"
 					required="true">
 					<f:validateLength minimum="5" />
 				</p:inputText>
 
-				<p:outputLabel value="Indicador *" for="indicador" />
+				<p:outputLabel value="Indicador" for="indicador" />
 				<p:selectOneMenu id="indicador"
-					value="#{argentumBean.nomeIndicador}">
+					value="#{argentumBean.nomeIndicador}" required="true">
 					<f:selectItem itemValue="IndicadorAbertura" itemLabel="Abertura" />
 					<f:selectItem itemValue="IndicadorFechamento"
 						itemLabel="Fechamento" />
@@ -31,6 +31,10 @@
 					<f:selectItem itemValue="MediaMovelSimples" itemLabel="Simples" />
 					<f:selectItem itemValue="MediaMovelPonderada" itemLabel="Ponderada" />
 				</p:selectOneMenu>
+
+				<p:outputLabel value="Intervalo" for="intervalo" />
+				<p:spinner id="intervalo" value="#{argentumBean.intervalo}" min="1"
+					max="999" maxlength="3" />
 
 				<p:commandLink value="Gerar gráfico" id="gerarGrafico"
 					actionListener="#{argentumBean.preparaDados}" ajax="false" />
