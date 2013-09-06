@@ -8,6 +8,10 @@ public class MediaMovelSimples implements Indicador {
 	private Indicador outroIndicador;
 
 	public MediaMovelSimples(int intervalo, Indicador outroIndicador) {
+		if (intervalo < 1) {
+			throw new IllegalArgumentException(
+					"O 'intervalo' deve ser maior que 0.");
+		}
 		this.intervalo = intervalo;
 		this.outroIndicador = outroIndicador;
 	}

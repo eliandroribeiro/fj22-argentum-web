@@ -6,6 +6,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import br.com.caelum.argentum.indicadores.IndicadorFactory;
 import br.com.caelum.argentum.modelo.Negociacao;
 import br.com.caelum.argentum.ws.ClienteWebService;
 
@@ -50,5 +51,8 @@ public class ArgentumBean implements Serializable {
 	public void preparaDados() {
 		ClienteWebService cliente = new ClienteWebService();
 		negociacoes = cliente.getNegociacoes();
+
+		IndicadorFactory indicadorFactory = new IndicadorFactory(nomeIndicador,
+				nomeMedia, 0);
 	}
 }
